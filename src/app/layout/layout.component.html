@@ -1,0 +1,20 @@
+<body>
+<!-- <img src="../../assets/pexels-instawally-176851.jpg" alt="image"> -->
+<div class="sidebar">
+    <img src="../../assets/web.png" alt="Person">
+    <h2>{{firstname}} {{lastname}}</h2>
+    <div class="userinfo">
+        <h3 (click)="toggleDetails()">Details</h3>
+        <div *ngIf="showDetails" class="details">
+            <p>First name:{{firstname}}</p>
+            <p>Last name:{{lastname}}</p>
+            <p>Username:{{username}}</p>
+            <p>Email:{{email}}</p>
+        </div>
+    </div>
+    <div class="logout">
+        <h3 (click)="logout()">Log Out</h3>
+    </div>
+</div>
+</body>
+<router-outlet></router-outlet>

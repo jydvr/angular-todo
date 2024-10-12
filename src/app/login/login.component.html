@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en"> 
+
+ <head> 
+
+  <meta charset="UTF-8"> 
+
+  <title>CodePen - Animated Login Form using Html &amp; CSS Only</title> 
+
+  <link rel="stylesheet" href="login.component.css"> 
+
+ </head> 
+
+ <body> <!-- partial:index.partial.html --> 
+
+  <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> 
+
+   <div class="signin" *ngIf="!isSign" > 
+    <div class="content"> 
+
+     <h2>Sign In</h2> 
+
+     <div class="form"> 
+
+      <div class="inputBox"> 
+        <label for="username"></label>
+        <input type="text" name="username" [(ngModel)]="loginObj.username" required> <i>Username</i> 
+      </div> 
+
+      <div class="inputBox"> 
+        <label for="password"></label>
+       <input type="password"[(ngModel)]="loginObj.password" required> <i>Password</i> 
+      </div> 
+
+      
+      <div class="inputBox"> 
+
+       <input type="submit" (click)="onLogin()" value="Login"> 
+
+      </div> 
+
+      <div class="links"> 
+        <!-- <a href="#">Forgot Password</a> -->
+        <button (click)="toggleForm()">Signup</button> 
+
+      </div> 
+
+     </div> 
+
+    </div> 
+
+   </div> 
+
+   <div class="signin" *ngIf="isSign">
+    <div class="content">
+      <h2>Sign Up</h2>
+      <div class="form">
+      <form class="signup" [formGroup]="signupform" (ngSubmit)="onSign()" id="up">
+        <div class="inputBox">
+          <label for="firstname"></label>
+          <input type="text" formControlName="firstname" required>
+          <i>Firstname</i>
+        </div>
+
+        <div class="inputBox">
+          <label for="lastname"></label>
+          <input type="text" formControlName="lastname" required>
+          <i>Lastname</i>
+        </div>
+
+        <div class="inputBox">
+          <label for="email"></label>
+          <input type="email" formControlName="email" required>
+          <i>Email</i>
+        </div>
+
+        <div class="inputBox">
+          <label for="username"></label>
+          <input type="text" formControlName="username" required>
+          <i>Username</i>
+        </div>
+
+        <div class="inputBox">
+          <label for="password"></label>
+          <input type="password" formControlName="password" required>
+          <i>Password</i>
+        </div>
+
+        <div class="inputBox">
+          <input type="submit" value="Signup">
+        </div>
+      </form>
+      <div class="links">
+        <a href="#" (click)="toggleForm()">Back to Login</a>
+      </div>
+    </div>
+  </div>
+   </div>
+  </section> <!-- partial --> 
+
+ </body>
+
+</html>

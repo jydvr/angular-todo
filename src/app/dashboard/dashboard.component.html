@@ -1,0 +1,68 @@
+<div *ngIf="tasks.length >= 0; else noTasks" class="tasks">
+  <h2>Your Tasks</h2>
+  <!-- <img src="../../assets/icons8-play-48.png" alt="play"> -->
+  <img src="../../assets/icons8-add-48.png" alt="add" id="head" (click)="toggleTaskForm()">
+  <div *ngIf="showTaskForm" class="task-form">
+    <h3>Add New Task</h3>
+    <form [formGroup]="addTaskForm" (ngSubmit)="addtask()">
+      <label>Task Name:</label>
+      <input formControlName="task_name" placeholder="Enter task name" />
+
+      <label>Task Description:</label>
+      <input formControlName="task_description" placeholder="Enter task description" />
+
+      <label>Start Date:</label>
+      <input formControlName="start_date" type="date" />
+
+      <label>End Date:</label>
+      <input formControlName="end_date" type="date" />
+
+      <button type="submit" [disabled]="addTaskForm.invalid">Add Task</button>
+    </form>
+  </div>
+
+  <ul>
+      <li *ngFor="let task of tasks" class="task">
+          <div class="task-header">
+              <h3 class="task-name">{{ task.name }}</h3>
+              <img src="../../assets/icons8-play-48.png" alt="play" id="play" (click)="editTask(task.id)">
+              <img src="../../assets/circle.png" alt="edit" id="edit" (click)="toggleLogForm()">
+              <div *ngIf="showLogForm" class="log-form">
+                <h3>Add Log</h3>
+                <form [formGroup]="addLogForm" (ngSubmit)="updatelog(task.id)">
+                  <label>Log Description:</label>
+                  <input formControlName="log_description" placeholder="Enter log description" />
+            
+                  <label>Percentage:</label>
+                  <input formControlName="percentage" placeholder="Enter percentage" /> 
+                  <button type="submit" [disabled]="addLogForm.invalid">Add Log</button>
+                </form>
+                <div class="logs" *ngIf="logs.length > 0">
+                  <h4>Logs:</h4>
+                  <ul>
+                    <li *ngFor="let log of logs">
+                      <p><strong>Description:</strong> {{ log.log_description }}</p>
+                      <p><strong>Percentage:</strong> {{ log.percentage }}%</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>           
+              <img src="../../assets/icons8-delete-50.png" alt="delete" id="del" (click)="deleteTask(task.id)">
+              <div class="task-dates">
+                  <p><strong>Start Date:</strong> {{ task.start_date | date: 'mediumDate' }}</p>
+                  <p><strong>End Date:</strong> {{ task.end_date ? (task.end_date | date: 'mediumDate') : 'Not set' }}</p>
+              </div>
+          </div>
+          <div class="task-details">
+              <p><strong>Description:</strong> {{ task.description }}</p>
+              <p><strong>Status:</strong> {{ task.status }}</p>
+          </div>
+      </li>
+  </ul>
+</div>
+
+<ng-template #noTasks>
+  <p>No tasks to display.</p>
+</ng-template>
+
+
